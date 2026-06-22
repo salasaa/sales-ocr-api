@@ -7,6 +7,7 @@ import authRouter from "./modules/auth/route";
 import userRouter from "./modules/user/route";
 import contactRouter from "./modules/contact/route";
 import transactionRouter from "./modules/transaction/route";
+import { ocrRouter } from "./modules/ocr/route";
 
 const app = new OpenAPIHono();
 
@@ -17,6 +18,7 @@ app.route("/users", userRouter);
 app.route("/contacts", contactRouter);
 app.route("/transactions", transactionRouter);
 app.route("/auth", authRouter);
+app.route("/ocr", ocrRouter);
 
 app.doc("/openapi.json", {
   openapi: "3.0.0",
