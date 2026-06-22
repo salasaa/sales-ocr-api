@@ -77,21 +77,10 @@ authRoute.openapi(
     responses: {
       200: {
         description: "Logged in user",
-        // 🎯 KUNCI PERBAIKAN: Ubah text/plain menjadi application/json agar tipenya cocok dengan c.json()
-        content: {
-          "application/json": {
-            schema: z.object({
-              token: z.string(),
-              user: PrivateUserSchema,
-            }),
-          },
-        },
+        content: { "text/plain": { schema: TokenSchema } },
       },
       400: {
         description: "Failed to login user",
-        content: {
-          "application/json": { schema: z.object({ message: z.string() }) },
-        },
       },
       404: {
         description: "User not found",
@@ -189,5 +178,4 @@ authRoute.openapi(
   },
 );
 
-// 🎯 KUNCI PERBAIKAN: Tambahkan export default agar bisa di-import langsung di src/index.ts
 export default authRoute;
