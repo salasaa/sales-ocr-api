@@ -43,23 +43,20 @@ model Contact {
 }
 
 model Transaction {
-  id              String          @id @default(ulid())
-  invoiceNumber   String          @unique
+  id              String            @id @default(uuid())
+  invoiceNumber   String            @unique
   transactionDate DateTime
   type            TransactionType
+  contactId       String
+  contact         Contact           @relation(fields: [contactId], references: [id])
   imageUrl        String?
-
-  // Relasi bersih mengarah ke id ULID milik Contact
-  contactId String
-  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
-
-  dpp        Float
-  ppn        Float
-  grandTotal Float
-  items      TransactionItem[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  cashierName     String?
+  dpp             Float
+  ppn             Float
+  grandTotal      Float
+  items           TransactionItem[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
 }
 
 model TransactionItem {
