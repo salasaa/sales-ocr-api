@@ -10,6 +10,9 @@ export default defineConfig({
     seed: "bun prisma/seed.ts",
   },
   datasource: {
+    // 🎯 BUAT LOCAL DULU DATABASE url: env("DATABASE_URL")
+    // url: env("DIRECT_URL"),
+    // 🎯 BUAT PROD DENGAN SUPABASE DIRECT url: env("DIRECT_URL"),
     url: env("DATABASE_URL"),
   },
 });
